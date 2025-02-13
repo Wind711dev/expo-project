@@ -21,6 +21,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "googleServicesFile": "./android/app/google-services.json",
       "package": "com.riowind711.chatbot"
     },
     "web": {
@@ -33,6 +34,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "9505daf2-6324-4d21-a0c9-8553f8fa5574"
+      }
+    },
+    "owner": "riowind711"
   }
 }
