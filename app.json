@@ -28,15 +28,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router",
-      "expo-build-properties",
-      {
-        "android": {
-          "extraMavenRepos": [
-            "../../node_modules/@notifee/react-native/android/libs"
-          ]
-        }
-      }
+      "expo-router"
     ],
     "experiments": {
       "typedRoutes": true
