@@ -20,6 +20,7 @@ import { useColorScheme } from '@/components/useColorScheme';
 import { useLoadingStore } from '@/store';
 
 import '../global.css';
+import { usePushNotifications } from '@/hooks/usePushNotifications';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -61,7 +62,10 @@ export default function RootLayout() {
 function RootLayoutNav() {
   const { isLoading } = useLoadingStore();
   const colorScheme = useColorScheme();
-
+  const { expoPushToken, notification } = usePushNotifications();
+  const data = JSON.stringify(notification, undefined, 2);
+  console.log("🚀 ~ RootLayoutNav ~ data:", data)
+  console.log("🚀 ~ RootLayoutNav ~ expoPushToken:", expoPushToken)
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={styles.container}>
