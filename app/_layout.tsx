@@ -1,10 +1,5 @@
 import { Toasts } from '@backpackapp-io/react-native-toast';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -16,15 +11,14 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import LoadingIndicator from '@/components/loading';
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
-import { useColorScheme } from '@/components/useColorScheme';
 import { useLoadingStore } from '@/store';
 
-import '../global.css';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
+import '../global.css';
 
 export {
   // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
+  ErrorBoundary
 } from 'expo-router';
 
 export const unstable_settings = {
@@ -61,25 +55,20 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const { isLoading } = useLoadingStore();
-  const colorScheme = useColorScheme();
   const { expoPushToken, notification } = usePushNotifications();
   const data = JSON.stringify(notification, undefined, 2);
-  console.log("🚀 ~ RootLayoutNav ~ data:", data)
-  console.log("🚀 ~ RootLayoutNav ~ expoPushToken:", expoPushToken)
+  console.log('🚀 ~ RootLayoutNav ~ data:', data);
+  console.log('🚀 ~ RootLayoutNav ~ expoPushToken:', expoPushToken);
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={styles.container}>
         <GluestackUIProvider>
-          <ThemeProvider
-            value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-          >
-            <Stack>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-            </Stack>
-            {isLoading && <LoadingIndicator />}
-            <Toasts />
-          </ThemeProvider>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+          </Stack>
+          {isLoading && <LoadingIndicator />}
+          <Toasts />
         </GluestackUIProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
